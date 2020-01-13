@@ -1,11 +1,7 @@
-var fs = require('fs');
-var express = require('express');
+const express = require('express')
+const app = express()
+const port = 3000
 
-var app = express();
-app.post('/', function (req, res, next) {
-  console.log(JSON.stringify(req.headers));
-  req.pipe(fs.createWriteStream('./'+req.headers['file-name']));
-  req.on('end', next);
-});
+app.get('/', (req, res) => res.send('Hello World!'))
 
-app.listen(4000);
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
